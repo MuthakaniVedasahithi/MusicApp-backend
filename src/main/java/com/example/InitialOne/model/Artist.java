@@ -26,7 +26,6 @@ public class Artist {
     private List<Song> songs;
 
 
-    // Getters & Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

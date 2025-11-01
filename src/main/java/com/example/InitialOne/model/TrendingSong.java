@@ -12,13 +12,12 @@ public class TrendingSong {
 
     private String artistName;
 
-    private String type; // mp3/mp4
+    private String type; 
 
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] fileData;
 
-    // --- Getters and Setters ---
 
     public Long getId() {
         return id;

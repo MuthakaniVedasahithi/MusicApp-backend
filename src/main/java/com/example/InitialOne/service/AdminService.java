@@ -16,7 +16,6 @@ public class AdminService {
     @Autowired private TrendingSongRepository songTrendingRepo;
     @Autowired private MovieRepository movieRepo;
 
-    // ✅ Artist
     public Artist addArtist(Artist artist) {
         return artistRepo.save(artist);
     }
@@ -32,7 +31,6 @@ public class AdminService {
                 artist.setImageBase64(Base64.getEncoder().encodeToString(artist.getImage()));
             }
 
-            // ✅ Then, encode each song before clearing bytes
             if (artist.getSongs() != null) {
                 for (Song song : artist.getSongs()) {
                     if (song.getData() != null) {
@@ -41,7 +39,6 @@ public class AdminService {
                 }
             }
 
-            // ✅ Finally, clear raw byte fields to avoid large payloads
             artist.setImage(null);
             if (artist.getSongs() != null) {
                 for (Song song : artist.getSongs()) {
