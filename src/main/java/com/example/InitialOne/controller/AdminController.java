@@ -36,6 +36,7 @@ public class AdminController {
 
 
 
+    // ✅ Add Artist (with multiple songs)
 
     @PostMapping("/addArtistWithSongs")
 
