@@ -19,7 +19,6 @@ public class AuthService {
     @Autowired
     private AdminRepository adminRepository;
 
-    // User signup/login
     public User registerUser(User user) { return userRepository.save(user); }
     public Optional<User> loginUser(String email, String password) {
         Optional<User> u = userRepository.findByEmail(email);
@@ -27,7 +26,6 @@ public class AuthService {
         return Optional.empty();
     }
 
-    // Admin signup/login
     public Admin registerAdmin(Admin admin) { return adminRepository.save(admin); }
     public Optional<Admin> loginAdmin(String email, String password) {
         Optional<Admin> a = adminRepository.findByEmail(email);
