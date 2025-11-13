@@ -59,4 +59,9 @@ public class TrendingSong {
     public void setFileData(byte[] fileData) {
         this.fileData = fileData;
     }
+
+	public void setBase64(String encodeToString) {
+		// TODO Auto-generated method stub
+		
+	}
 }

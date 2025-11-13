@@ -1,64 +1,50 @@
 package com.example.InitialOne.model;
+
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 
 @Entity
-@Table(name = "movie")
-
 public class Movie {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
-
-    private String genre;
-
-    @Column(length = 1000)
-    private String description;
+    private String director;
+    private String category; // ✅ Tollywood / Bollywood / Hollywood
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
-    private byte[] posterImage; // Poster image file
+    @JsonIgnore
+    private byte[] posterImage;
 
-    // --- Getters and Setters ---
+    @Transient
+    private String imageBase64;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<MovieSong> songs;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getDirector() { return director; }
+    public void setDirector(String director) { this.director = director; }
 
-    public String getGenre() {
-        return genre;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+    public byte[] getPosterImage() { return posterImage; }
+    public void setPosterImage(byte[] posterImage) { this.posterImage = posterImage; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getImageBase64() { return imageBase64; }
+    public void setImageBase64(String imageBase64) { this.imageBase64 = imageBase64; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public byte[] getPosterImage() {
-        return posterImage;
-    }
-
-    public void setPosterImage(byte[] posterImage) {
-        this.posterImage = posterImage;
-    }
+    public List<MovieSong> getSongs() { return songs; }
+    public void setSongs(List<MovieSong> songs) { this.songs = songs; }
 }
