@@ -22,7 +22,7 @@ public class AuthController {
 	 @Autowired
 	    private AuthService authService;
 
-	    // User endpoints
+	    
 	    @PostMapping("/user/signup")
 	    public ResponseEntity<?> userSignup(@RequestBody User user) {
 	        return ResponseEntity.ok(authService.registerUser(user));
@@ -35,7 +35,7 @@ public class AuthController {
 	        return ResponseEntity.status(401).body("Invalid user credentials");
 	    }
 
-	    // Admin endpoints
+	    
 	    @PostMapping("/admin/signup")
 	    public ResponseEntity<?> adminSignup(@RequestBody Admin admin) {
 	        return ResponseEntity.ok(authService.registerAdmin(admin));
